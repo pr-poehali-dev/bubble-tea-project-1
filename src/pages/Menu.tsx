@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import DrinkCard from '@/components/DrinkCard';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
@@ -14,12 +15,12 @@ interface Drink {
   name: string;
   description: string;
   sizes: DrinkSize[];
-  image: string;
+  icon: string;
 }
 
 interface Category {
   title: string;
-  emoji: string;
+  icon: string;
   drinks: Drink[];
 }
 
@@ -56,63 +57,63 @@ const Menu = () => {
   const menuData: Category[] = [
     {
       title: 'КОФЕ',
-      emoji: '☕',
+      icon: 'coffee',
       drinks: [
-        { name: 'Эспрессо', description: 'Классический крепкий кофе', sizes: [{ size: '30мл', price: 150 }], image: '☕' },
-        { name: 'Американо', description: 'Эспрессо с горячей водой', sizes: [{ size: '30мл', price: 260 }, { size: '200мл', price: 300 }, { size: '300мл', price: 330 }], image: '☕' },
-        { name: 'Капучино', description: 'Эспрессо с молочной пенкой', sizes: [{ size: '30мл', price: 290 }, { size: '200мл', price: 330 }, { size: '300мл', price: 380 }], image: '☕' },
-        { name: 'Латте', description: 'Эспрессо с молоком', sizes: [{ size: '200мл', price: 330 }, { size: '300мл', price: 380 }], image: '☕' },
-        { name: 'Раф', description: 'Кофе со сливками и ванильным сиропом', sizes: [{ size: '200мл', price: 380 }, { size: '300мл', price: 430 }], image: '☕' },
-        { name: 'Флэт-уайт', description: 'Двойной эспрессо с микропенкой', sizes: [{ size: '30мл', price: 350 }], image: '☕' },
+        { name: 'Эспрессо', description: 'Классический крепкий кофе', sizes: [{ size: '30мл', price: 150 }], icon: 'coffee' },
+        { name: 'Американо', description: 'Эспрессо с горячей водой', sizes: [{ size: '30мл', price: 260 }, { size: '200мл', price: 300 }, { size: '300мл', price: 330 }], icon: 'coffee' },
+        { name: 'Капучино', description: 'Эспрессо с молочной пенкой', sizes: [{ size: '30мл', price: 290 }, { size: '200мл', price: 330 }, { size: '300мл', price: 380 }], icon: 'coffee' },
+        { name: 'Латте', description: 'Эспрессо с молоком', sizes: [{ size: '200мл', price: 330 }, { size: '300мл', price: 380 }], icon: 'coffee' },
+        { name: 'Раф', description: 'Кофе со сливками и ванильным сиропом', sizes: [{ size: '200мл', price: 380 }, { size: '300мл', price: 430 }], icon: 'coffee' },
+        { name: 'Флэт-уайт', description: 'Двойной эспрессо с микропенкой', sizes: [{ size: '30мл', price: 350 }], icon: 'coffee' },
       ]
     },
     {
       title: 'ГОРЯЧИЕ НАПИТКИ',
-      emoji: '🔥',
+      icon: 'hot',
       drinks: [
-        { name: 'Горячий шоколад', description: 'Насыщенный шоколадный напиток', sizes: [{ size: '200мл', price: 290 }, { size: '300мл', price: 330 }, { size: '400мл', price: 380 }], image: '🍫' },
-        { name: 'Какао', description: 'Классическое какао на молоке', sizes: [{ size: '200мл', price: 290 }, { size: '300мл', price: 330 }, { size: '400мл', price: 380 }], image: '🍫' },
-        { name: 'Матча-латте', description: 'Японский зеленый чай с молоком', sizes: [{ size: '200мл', price: 290 }, { size: '300мл', price: 330 }, { size: '400мл', price: 380 }], image: '🍵' },
-        { name: 'Глинтвейн', description: 'Горячий напиток с пряностями', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], image: '🍷' },
+        { name: 'Горячий шоколад', description: 'Насыщенный шоколадный напиток', sizes: [{ size: '200мл', price: 290 }, { size: '300мл', price: 330 }, { size: '400мл', price: 380 }], icon: 'hot' },
+        { name: 'Какао', description: 'Классическое какао на молоке', sizes: [{ size: '200мл', price: 290 }, { size: '300мл', price: 330 }, { size: '400мл', price: 380 }], icon: 'hot' },
+        { name: 'Матча-латте', description: 'Японский зеленый чай с молоком', sizes: [{ size: '200мл', price: 290 }, { size: '300мл', price: 330 }, { size: '400мл', price: 380 }], icon: 'hot' },
+        { name: 'Глинтвейн', description: 'Горячий напиток с пряностями', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], icon: 'hot' },
       ]
     },
     {
       title: 'АВТОРСКИЙ КОФЕ',
-      emoji: '✨',
+      icon: 'star',
       drinks: [
-        { name: 'Раф Соленая фисташка', description: 'Нежный раф с фисташковым вкусом', sizes: [{ size: '300мл', price: 400 }, { size: '400мл', price: 450 }], image: '🌰' },
-        { name: 'Раф Халва', description: 'Восточная сладость в кофейном напитке', sizes: [{ size: '300мл', price: 400 }, { size: '400мл', price: 450 }], image: '🍯' },
-        { name: 'Раф Арахисовый', description: 'Кремовый раф с арахисовой пастой', sizes: [{ size: '300мл', price: 400 }, { size: '400мл', price: 450 }], image: '🥜' },
-        { name: 'Латте Взрывная карамель', description: 'Латте с карамельными нотками', sizes: [{ size: '300мл', price: 380 }, { size: '400мл', price: 430 }], image: '🍮' },
-        { name: 'Латте Белый шоколад', description: 'Нежный латте с белым шоколадом', sizes: [{ size: '300мл', price: 380 }, { size: '400мл', price: 430 }], image: '🤍' },
+        { name: 'Раф Соленая фисташка', description: 'Нежный раф с фисташковым вкусом', sizes: [{ size: '300мл', price: 400 }, { size: '400мл', price: 450 }], icon: 'star' },
+        { name: 'Раф Халва', description: 'Восточная сладость в кофейном напитке', sizes: [{ size: '300мл', price: 400 }, { size: '400мл', price: 450 }], icon: 'star' },
+        { name: 'Раф Арахисовый', description: 'Кремовый раф с арахисовой пастой', sizes: [{ size: '300мл', price: 400 }, { size: '400мл', price: 450 }], icon: 'star' },
+        { name: 'Латте Взрывная карамель', description: 'Латте с карамельными нотками', sizes: [{ size: '300мл', price: 380 }, { size: '400мл', price: 430 }], icon: 'star' },
+        { name: 'Латте Белый шоколад', description: 'Нежный латте с белым шоколадом', sizes: [{ size: '300мл', price: 380 }, { size: '400мл', price: 430 }], icon: 'star' },
       ]
     },
     {
       title: 'БАБЛТИ',
-      emoji: '🧋',
+      icon: 'bubble',
       drinks: [
-        { name: 'БаблТи Кофейный', description: 'Кофейный напиток с тапиокой', sizes: [{ size: '300мл', price: 400 }, { size: '400мл', price: 450 }], image: '🧋' },
-        { name: 'БаблТи Матча', description: 'Зеленый чай матча с тапиокой', sizes: [{ size: '300мл', price: 400 }, { size: '400мл', price: 450 }], image: '🧋' },
-        { name: 'БаблТи Матча-Клубника', description: 'Матча со вкусом клубники', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], image: '🧋' },
-        { name: 'БаблТи Синнабон', description: 'Вкус знаменитой булочки с корицей', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], image: '🧋' },
-        { name: 'БаблТи Тропик', description: 'Тропический микс фруктов', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], image: '🧋' },
-        { name: 'БаблТи Малиновый пирог', description: 'Вкус домашнего малинового пирога', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], image: '🧋' },
-        { name: 'БаблТи Шоколад', description: 'Шоколадный баблти с тапиокой', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], image: '🧋' },
-        { name: 'БаблТи Попкорн', description: 'Необычный вкус попкорна', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], image: '🧋' },
-        { name: 'БаблТи Соленая карамель', description: 'Соленая карамель с жемчужинами', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], image: '🧋' },
+        { name: 'БаблТи Кофейный', description: 'Кофейный напиток с тапиокой', sizes: [{ size: '300мл', price: 400 }, { size: '400мл', price: 450 }], icon: 'bubble' },
+        { name: 'БаблТи Матча', description: 'Зеленый чай матча с тапиокой', sizes: [{ size: '300мл', price: 400 }, { size: '400мл', price: 450 }], icon: 'bubble' },
+        { name: 'БаблТи Матча-Клубника', description: 'Матча со вкусом клубники', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], icon: 'bubble' },
+        { name: 'БаблТи Синнабон', description: 'Вкус знаменитой булочки с корицей', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], icon: 'bubble' },
+        { name: 'БаблТи Тропик', description: 'Тропический микс фруктов', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], icon: 'bubble' },
+        { name: 'БаблТи Малиновый пирог', description: 'Вкус домашнего малинового пирога', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], icon: 'bubble' },
+        { name: 'БаблТи Шоколад', description: 'Шоколадный баблти с тапиокой', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], icon: 'bubble' },
+        { name: 'БаблТи Попкорн', description: 'Необычный вкус попкорна', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], icon: 'bubble' },
+        { name: 'БаблТи Соленая карамель', description: 'Соленая карамель с жемчужинами', sizes: [{ size: '300мл', price: 440 }, { size: '400мл', price: 490 }], icon: 'bubble' },
       ]
     },
     {
       title: 'BUBBLE',
-      emoji: '🍹',
+      icon: 'fruit',
       drinks: [
-        { name: 'Ананас-маракуйя', description: 'Фруктовый чай', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], image: '🍍' },
-        { name: 'Малиновый', description: 'Витаминный напиток с малиной', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], image: '🍇' },
-        { name: 'Имбирный', description: 'Согревающий имбирный чай', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], image: '🫚' },
-        { name: 'Облепиховый', description: 'Витаминный облепиховый напиток', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], image: '🍊' },
-        { name: 'Смузи ягодный', description: 'Микс из свежих ягод', sizes: [{ size: '300мл', price: 330 }, { size: '400мл', price: 360 }], image: '🍓' },
-        { name: 'Смузи мята-маракуйя', description: 'Освежающий смузи', sizes: [{ size: '300мл', price: 330 }, { size: '400мл', price: 360 }], image: '🌿' },
-        { name: 'Смузи ананас-манго', description: 'Тропический микс фруктов', sizes: [{ size: '300мл', price: 330 }, { size: '400мл', price: 360 }], image: '🥭' },
+        { name: 'Ананас-маракуйя', description: 'Фруктовый чай', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], icon: 'fruit' },
+        { name: 'Малиновый', description: 'Витаминный напиток с малиной', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], icon: 'fruit' },
+        { name: 'Имбирный', description: 'Согревающий имбирный чай', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], icon: 'fruit' },
+        { name: 'Облепиховый', description: 'Витаминный облепиховый напиток', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], icon: 'fruit' },
+        { name: 'Смузи ягодный', description: 'Микс из свежих ягод', sizes: [{ size: '300мл', price: 330 }, { size: '400мл', price: 360 }], icon: 'fruit' },
+        { name: 'Смузи мята-маракуйя', description: 'Освежающий смузи', sizes: [{ size: '300мл', price: 330 }, { size: '400мл', price: 360 }], icon: 'fruit' },
+        { name: 'Смузи ананас-манго', description: 'Тропический микс фруктов', sizes: [{ size: '300мл', price: 330 }, { size: '400мл', price: 360 }], icon: 'fruit' },
       ]
     }
   ];
@@ -143,6 +144,14 @@ const Menu = () => {
     if (!selectedSize) return 0;
     const addonsTotal = selectedAddons.reduce((sum, addon) => sum + addon.price, 0);
     return selectedSize.price + addonsTotal;
+  };
+
+  const iconMap: Record<string, string> = {
+    coffee: 'Coffee',
+    hot: 'Flame',
+    star: 'Sparkles',
+    bubble: 'CircleDot',
+    fruit: 'Apple',
   };
 
   return (
@@ -178,31 +187,24 @@ const Menu = () => {
           {/* Menu Items */}
           {filteredMenu.map((category, catIdx) => (
             <section key={category.title} className="mb-16 animate-fade-in" style={{ animationDelay: `${catIdx * 0.1}s` }}>
-              <div className="bg-gradient-to-r from-primary to-secondary p-6 rounded-t-2xl">
-                <h2 className="text-3xl font-bold text-white flex items-center gap-3">
-                  <span className="text-4xl">{category.emoji}</span>
-                  {category.title}
-                </h2>
+              <div className="bg-gradient-to-r from-primary to-secondary p-6 rounded-t-2xl flex items-center gap-4">
+                <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
+                  <Icon name={iconMap[category.icon]} size={28} className="text-white" />
+                </div>
+                <h2 className="text-3xl font-bold text-white">{category.title}</h2>
               </div>
               
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {category.drinks.map((drink, idx) => (
-                  <div
+                  <DrinkCard
                     key={drink.name}
+                    name={drink.name}
+                    description={drink.description}
+                    minPrice={Math.min(...drink.sizes.map(s => s.price))}
+                    icon={drink.icon}
                     onClick={() => openDrinkModal(drink)}
-                    className="bg-card/30 p-6 rounded-lg border-2 border-primary/20 hover:neon-border hover:scale-105 transition-all cursor-pointer animate-scale-in"
-                    style={{ animationDelay: `${idx * 0.05}s` }}
-                  >
-                    <div className="text-5xl mb-4">{drink.image}</div>
-                    <h3 className="text-xl font-semibold mb-2">{drink.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-3">{drink.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-primary font-bold">
-                        от {Math.min(...drink.sizes.map(s => s.price))}₽
-                      </span>
-                      <Icon name="Plus" size={20} className="text-primary" />
-                    </div>
-                  </div>
+                    delay={idx * 0.05}
+                  />
                 ))}
               </div>
             </section>
@@ -219,7 +221,9 @@ const Menu = () => {
 
           {selectedDrink && (
             <div className="space-y-6">
-              <div className="text-6xl text-center">{selectedDrink.image}</div>
+              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mx-auto neon-box">
+                <Icon name={iconMap[selectedDrink.icon]} size={40} className="text-white" />
+              </div>
 
               {/* Sizes */}
               <div>

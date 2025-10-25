@@ -54,18 +54,23 @@ const Promotions = () => {
                   В ПОДАРОК
                 </div>
                 <p className="text-muted-foreground">
-                  Объем 300мл
+                  Объем 300мл: Капучино, Латте, Раф, Американо, Флэт-уайт
                 </p>
-                <div className="space-y-2 text-sm text-muted-foreground">
-                  <div className="flex items-center justify-center gap-2">
-                    <Icon name="Coffee" size={16} />
-                    <span>Капучино • Латте • Раф</span>
-                  </div>
-                  <div className="flex items-center justify-center gap-2">
-                    <Icon name="Coffee" size={16} />
-                    <span>Американо • Флэт-уайт</span>
-                  </div>
-                </div>
+                <p className="text-sm text-muted-foreground italic">
+                  Просто за то, что ты с нами 🩷
+                </p>
+                <a
+                  href="https://onelink.to/6d2m4z"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 hover:bg-white/20 rounded-full text-white font-medium transition-all mt-4"
+                >
+                  <Icon name="Smartphone" size={20} />
+                  Скачать приложение
+                </a>
+                <p className="text-xs text-muted-foreground mt-2">
+                  Показывай QR при покупке и копи бонусы!
+                </p>
               </div>
             </div>
           </div>

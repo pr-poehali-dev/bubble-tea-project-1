@@ -78,17 +78,19 @@ const Index = () => {
           </h2>
           <div className="grid md:grid-cols-4 gap-6">
             {[
-              { name: 'БаблТи Матча', emoji: '🍵', price: 'от 400₽' },
-              { name: 'Раф Фисташка', emoji: '🌰', price: 'от 400₽' },
-              { name: 'Латте', emoji: '☕', price: 'от 330₽' },
-              { name: 'Смузи Ягодный', emoji: '🍓', price: 'от 330₽' },
+              { name: 'БаблТи Матча', icon: 'CircleDot', price: 'от 400₽' },
+              { name: 'Раф Фисташка', icon: 'Sparkles', price: 'от 400₽' },
+              { name: 'Латте', icon: 'Coffee', price: 'от 330₽' },
+              { name: 'Смузи Ягодный', icon: 'Apple', price: 'от 330₽' },
             ].map((drink, idx) => (
               <div
                 key={drink.name}
-                className="bg-card/30 p-6 rounded-2xl border-2 border-primary/20 hover:neon-border hover:scale-105 transition-all text-center animate-scale-in"
+                className="bg-card/30 p-6 rounded-2xl border-2 border-primary/20 hover:neon-border hover:scale-105 transition-all text-center animate-scale-in group"
                 style={{ animationDelay: `${idx * 0.1}s` }}
               >
-                <div className="text-6xl mb-4">{drink.emoji}</div>
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mx-auto mb-4 neon-box group-hover:scale-110 transition-transform">
+                  <Icon name={drink.icon} size={32} className="text-white" />
+                </div>
                 <h3 className="text-lg font-semibold mb-2">{drink.name}</h3>
                 <p className="text-primary font-bold">{drink.price}</p>
               </div>

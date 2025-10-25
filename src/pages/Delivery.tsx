@@ -23,7 +23,7 @@ const Delivery = () => {
               Заказывайте через Яндекс.Еда
             </h2>
             <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-              Быстрая доставка в любую точку Москвы. Все наше меню доступно для заказа онлайн.
+              Быстрая доставка в радиусе 20км от метро Солнцево. Все наше меню доступно для заказа онлайн.
             </p>
             <a
               href="https://eda.yandex.ru/restaurant/bubble_coffee"
@@ -50,7 +50,7 @@ const Delivery = () => {
               <Icon name="MapPin" size={40} className="text-primary mb-4" />
               <h3 className="text-xl font-bold mb-3">Зона доставки</h3>
               <p className="text-muted-foreground">
-                Доставляем по всей Москве. Стоимость рассчитывается автоматически при оформлении
+                Доставляем в радиусе 20км от метро Солнцево. Стоимость рассчитывается автоматически при оформлении
               </p>
             </div>
 
