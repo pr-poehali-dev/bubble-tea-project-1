@@ -92,7 +92,7 @@ const Index = () => {
               <img 
                 src="https://cdn.poehali.dev/files/43af69b9-81ec-415b-8ee0-23795b0ddbba.JPG" 
                 alt="Гость кофейни с напитком"
-                className="w-full h-64 object-cover"
+                className="w-full h-64 object-contain"
               />
             </div>
           </div>
