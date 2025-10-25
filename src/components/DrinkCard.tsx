@@ -29,8 +29,8 @@ const DrinkCard = ({ name, description, minPrice, icon, onClick, delay = 0 }: Dr
           <Icon name={iconMap[icon] || 'Coffee'} size={24} className="text-primary" />
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="text-base md:text-lg font-semibold mb-1 truncate">{name}</h3>
-          <p className="text-xs md:text-sm text-muted-foreground/80 mb-2 line-clamp-1">{description}</p>
+          <h3 className="text-base md:text-lg font-semibold mb-1">{name}</h3>
+          <p className="text-xs md:text-sm text-muted-foreground/80 mb-2">{description}</p>
           <div className="flex items-center justify-between">
             <span className="text-sm md:text-base text-primary font-semibold">от {minPrice}₽</span>
             <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all">

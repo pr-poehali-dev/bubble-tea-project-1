@@ -149,9 +149,9 @@ const Index = () => {
           <div className="grid md:grid-cols-4 gap-6">
             {[
               { name: 'БаблТи Матча', icon: 'CircleDot', price: 'от 400₽' },
-              { name: 'Раф Фисташка', icon: 'Sparkles', price: 'от 400₽' },
+              { name: 'Латте Белый шоколад', icon: 'Sparkles', price: 'от 380₽' },
               { name: 'Латте', icon: 'Coffee', price: 'от 330₽' },
-              { name: 'Смузи Ягодный', icon: 'Apple', price: 'от 330₽' },
+              { name: 'БаблТи Карамельный попкорн', icon: 'CircleDot', price: 'от 440₽' },
             ].map((drink, idx) => (
               <div
                 key={drink.name}

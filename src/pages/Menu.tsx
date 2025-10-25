@@ -104,13 +104,19 @@ const Menu = () => {
       ]
     },
     {
-      title: 'BUBBLE',
+      title: 'ЧАИ',
       icon: 'fruit',
       drinks: [
         { name: 'Ананас-маракуйя', description: 'Фруктовый чай', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], icon: 'fruit' },
         { name: 'Малиновый', description: 'Витаминный напиток с малиной', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], icon: 'fruit' },
         { name: 'Имбирный', description: 'Согревающий имбирный чай', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], icon: 'fruit' },
         { name: 'Облепиховый', description: 'Витаминный облепиховый напиток', sizes: [{ size: '300мл', price: 390 }, { size: '400мл', price: 440 }], icon: 'fruit' },
+      ]
+    },
+    {
+      title: 'СМУЗИ',
+      icon: 'fruit',
+      drinks: [
         { name: 'Смузи ягодный', description: 'Микс из свежих ягод', sizes: [{ size: '300мл', price: 330 }, { size: '400мл', price: 360 }], icon: 'fruit' },
         { name: 'Смузи мята-маракуйя', description: 'Освежающий смузи', sizes: [{ size: '300мл', price: 330 }, { size: '400мл', price: 360 }], icon: 'fruit' },
         { name: 'Смузи ананас-манго', description: 'Тропический микс фруктов', sizes: [{ size: '300мл', price: 330 }, { size: '400мл', price: 360 }], icon: 'fruit' },
