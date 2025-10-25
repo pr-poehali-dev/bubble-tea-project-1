@@ -78,7 +78,7 @@ const Index = () => {
               <img 
                 src="https://cdn.poehali.dev/files/3fb9a303-ddb0-450c-856e-45cb4535069a.JPG" 
                 alt="Интерьер кофейни BUBBLE"
-                className="w-full h-64 object-cover"
+                className="w-full h-64 object-contain"
               />
             </div>
             <div className="rounded-2xl overflow-hidden border-2 border-primary/20 hover:neon-border transition-all animate-scale-in" style={{ animationDelay: '0.1s' }}>
