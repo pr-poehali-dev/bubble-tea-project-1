@@ -21,17 +21,23 @@ const DrinkCard = ({ name, description, minPrice, icon, onClick, delay = 0 }: Dr
   return (
     <div
       onClick={onClick}
-      className="bg-card/30 p-6 rounded-lg border-2 border-primary/20 hover:neon-border hover:scale-105 transition-all cursor-pointer animate-scale-in group"
+      className="bg-card/40 backdrop-blur-sm p-4 md:p-5 rounded-xl border border-primary/10 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 transition-all cursor-pointer animate-scale-in group"
       style={{ animationDelay: `${delay}s` }}
     >
-      <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-4 neon-box group-hover:scale-110 transition-transform">
-        <Icon name={iconMap[icon] || 'Coffee'} size={32} className="text-white" />
-      </div>
-      <h3 className="text-xl font-semibold mb-2">{name}</h3>
-      <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{description}</p>
-      <div className="flex items-center justify-between">
-        <span className="text-primary font-bold">от {minPrice}₽</span>
-        <Icon name="Plus" size={20} className="text-primary group-hover:rotate-90 transition-transform" />
+      <div className="flex items-start gap-3 md:gap-4">
+        <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center flex-shrink-0 group-hover:from-primary/30 group-hover:to-secondary/30 transition-all">
+          <Icon name={iconMap[icon] || 'Coffee'} size={24} className="text-primary" />
+        </div>
+        <div className="flex-1 min-w-0">
+          <h3 className="text-base md:text-lg font-semibold mb-1 truncate">{name}</h3>
+          <p className="text-xs md:text-sm text-muted-foreground/80 mb-2 line-clamp-1">{description}</p>
+          <div className="flex items-center justify-between">
+            <span className="text-sm md:text-base text-primary font-semibold">от {minPrice}₽</span>
+            <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all">
+              <Icon name="Plus" size={16} className="text-primary group-hover:rotate-90 transition-transform" />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

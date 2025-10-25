@@ -158,25 +158,25 @@ const Menu = () => {
     <div className="min-h-screen bubble-bg">
       <Header />
       
-      <div className="pt-32 pb-20 px-4">
-        <div className="container mx-auto">
-          <h1 className="text-5xl md:text-6xl font-bold text-center mb-4 gradient-text neon-text">
+      <div className="pt-24 md:pt-32 pb-16 md:pb-20 px-4">
+        <div className="container mx-auto max-w-5xl">
+          <h1 className="text-3xl md:text-5xl font-bold text-center mb-2 md:mb-3 gradient-text neon-text">
             Меню
           </h1>
-          <p className="text-center text-muted-foreground mb-12">
+          <p className="text-center text-muted-foreground/80 mb-8 md:mb-12 text-sm md:text-base">
             Выберите свой идеальный напиток
           </p>
 
           {/* Category Filters */}
-          <div className="flex gap-3 mb-12 overflow-x-auto pb-2">
+          <div className="flex gap-2 md:gap-3 mb-8 md:mb-12 overflow-x-auto pb-2 scrollbar-hide">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2 rounded-full font-medium whitespace-nowrap transition-all ${
+                className={`px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm font-medium whitespace-nowrap transition-all ${
                   activeCategory === cat
-                    ? 'bg-gradient-to-r from-primary to-secondary text-white neon-box'
-                    : 'bg-card/50 text-muted-foreground border-2 border-primary/20 hover:border-primary/50'
+                    ? 'bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/30'
+                    : 'bg-card/40 text-muted-foreground border border-primary/10 hover:border-primary/30'
                 }`}
               >
                 {cat === 'all' ? 'Все напитки' : cat}
@@ -186,15 +186,15 @@ const Menu = () => {
 
           {/* Menu Items */}
           {filteredMenu.map((category, catIdx) => (
-            <section key={category.title} className="mb-16 animate-fade-in" style={{ animationDelay: `${catIdx * 0.1}s` }}>
-              <div className="bg-gradient-to-r from-primary to-secondary p-6 rounded-t-2xl flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-white/20 flex items-center justify-center">
-                  <Icon name={iconMap[category.icon]} size={28} className="text-white" />
+            <section key={category.title} className="mb-10 md:mb-14 animate-fade-in" style={{ animationDelay: `${catIdx * 0.1}s` }}>
+              <div className="flex items-center gap-3 mb-4 md:mb-5">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                  <Icon name={iconMap[category.icon]} size={20} className="text-primary md:w-6 md:h-6" />
                 </div>
-                <h2 className="text-3xl font-bold text-white">{category.title}</h2>
+                <h2 className="text-xl md:text-2xl font-bold gradient-text">{category.title}</h2>
               </div>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 {category.drinks.map((drink, idx) => (
                   <DrinkCard
                     key={drink.name}
@@ -214,33 +214,33 @@ const Menu = () => {
 
       {/* Drink Modal */}
       <Dialog open={!!selectedDrink} onOpenChange={() => setSelectedDrink(null)}>
-        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto bg-card border-2 neon-border">
+        <DialogContent className="max-w-lg max-h-[85vh] overflow-y-auto bg-card/95 backdrop-blur-md border border-primary/20">
           <DialogHeader>
-            <DialogTitle className="text-2xl gradient-text">{selectedDrink?.name}</DialogTitle>
+            <DialogTitle className="text-xl md:text-2xl gradient-text">{selectedDrink?.name}</DialogTitle>
           </DialogHeader>
 
           {selectedDrink && (
-            <div className="space-y-6">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mx-auto neon-box">
-                <Icon name={iconMap[selectedDrink.icon]} size={40} className="text-white" />
+            <div className="space-y-5 md:space-y-6">
+              <div className="w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center mx-auto">
+                <Icon name={iconMap[selectedDrink.icon]} size={32} className="text-primary md:w-10 md:h-10" />
               </div>
 
               {/* Sizes */}
               <div>
-                <h3 className="font-semibold mb-3 text-primary">Выберите размер:</h3>
-                <div className="grid grid-cols-2 gap-3">
+                <h3 className="text-sm md:text-base font-semibold mb-2 md:mb-3 text-foreground">Выберите размер:</h3>
+                <div className="grid grid-cols-2 gap-2 md:gap-3">
                   {selectedDrink.sizes.map(size => (
                     <button
                       key={size.size}
                       onClick={() => setSelectedSize(size)}
-                      className={`p-4 rounded-lg border-2 transition-all ${
+                      className={`p-3 md:p-4 rounded-lg border transition-all text-sm md:text-base ${
                         selectedSize?.size === size.size
-                          ? 'bg-gradient-to-r from-primary to-secondary text-white neon-box border-transparent'
-                          : 'border-primary/20 hover:border-primary/50'
+                          ? 'bg-gradient-to-r from-primary to-secondary text-white border-transparent shadow-lg shadow-primary/30'
+                          : 'border-primary/20 hover:border-primary/40 bg-card/40'
                       }`}
                     >
-                      <div>{size.size}</div>
-                      <div className="font-bold">{size.price}₽</div>
+                      <div className="text-xs md:text-sm opacity-90">{size.size}</div>
+                      <div className="font-bold mt-1">{size.price}₽</div>
                     </button>
                   ))}
                 </div>
@@ -248,15 +248,15 @@ const Menu = () => {
 
               {/* Syrups */}
               <div>
-                <h3 className="font-semibold mb-3 text-primary">Сиропы (+50₽):</h3>
-                <div className="grid grid-cols-2 gap-2 max-h-40 overflow-y-auto">
+                <h3 className="text-sm md:text-base font-semibold mb-2 md:mb-3 text-foreground">Сиропы (+50₽):</h3>
+                <div className="grid grid-cols-2 gap-2 max-h-32 md:max-h-40 overflow-y-auto pr-2">
                   {syrups.map(syrup => (
-                    <label key={syrup} className="flex items-center gap-2 cursor-pointer text-sm">
+                    <label key={syrup} className="flex items-center gap-2 cursor-pointer text-xs md:text-sm hover:text-primary transition-colors">
                       <input
                         type="checkbox"
                         checked={selectedAddons.some(a => a.name === syrup)}
                         onChange={() => toggleAddon({ name: syrup, price: 50 })}
-                        className="rounded border-primary"
+                        className="rounded border-primary/30 w-3.5 h-3.5 md:w-4 md:h-4"
                       />
                       {syrup}
                     </label>
@@ -266,36 +266,36 @@ const Menu = () => {
 
               {/* Other Addons */}
               <div>
-                <h3 className="font-semibold mb-3 text-primary">Другие дополнения:</h3>
-                <div className="space-y-2">
+                <h3 className="text-sm md:text-base font-semibold mb-2 md:mb-3 text-foreground">Другие дополнения:</h3>
+                <div className="space-y-1 md:space-y-2 max-h-48 overflow-y-auto pr-2">
                   {otherAddons.map(addon => (
-                    <label key={addon.name} className="flex items-center justify-between cursor-pointer p-2 rounded hover:bg-primary/10">
+                    <label key={addon.name} className="flex items-center justify-between cursor-pointer p-2 rounded-lg hover:bg-primary/5 transition-colors">
                       <div className="flex items-center gap-2">
                         <input
                           type="checkbox"
                           checked={selectedAddons.some(a => a.name === addon.name)}
                           onChange={() => toggleAddon(addon)}
-                          className="rounded border-primary"
+                          className="rounded border-primary/30 w-3.5 h-3.5 md:w-4 md:h-4"
                         />
-                        <span className="text-sm">{addon.name}</span>
+                        <span className="text-xs md:text-sm">{addon.name}</span>
                       </div>
-                      <span className="text-sm font-semibold text-primary">+{addon.price}₽</span>
+                      <span className="text-xs md:text-sm font-semibold text-primary">+{addon.price}₽</span>
                     </label>
                   ))}
                 </div>
               </div>
 
               {/* Total */}
-              <div className="bg-gradient-to-r from-primary to-secondary p-4 rounded-lg text-white">
+              <div className="bg-gradient-to-r from-primary/90 to-secondary/90 p-3 md:p-4 rounded-xl text-white shadow-lg">
                 <div className="flex justify-between items-center">
-                  <span className="font-semibold">Итого:</span>
-                  <span className="text-2xl font-bold">{getTotalPrice()}₽</span>
+                  <span className="text-sm md:text-base font-semibold">Итого:</span>
+                  <span className="text-xl md:text-2xl font-bold">{getTotalPrice()}₽</span>
                 </div>
               </div>
 
               <Button
                 onClick={() => setSelectedDrink(null)}
-                className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90"
+                className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-sm md:text-base py-5 md:py-6"
               >
                 Закрыть
               </Button>
