@@ -40,9 +40,68 @@ const Index = () => {
 
       <section className="py-20 px-4">
         <div className="container mx-auto">
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 gradient-text neon-text">
+            О нас
+          </h2>
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <div className="relative">
+              <div className="rounded-2xl overflow-hidden border-2 neon-border animate-fade-in">
+                <img 
+                  src="https://cdn.poehali.dev/files/d21f7bda-8db6-4fe3-9959-3a3ddc1f2d97.JPG" 
+                  alt="Екатерина и Данил - основатели BUBBLE"
+                  className="w-full h-auto"
+                />
+              </div>
+            </div>
+            <div className="space-y-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <h3 className="text-2xl md:text-3xl font-bold gradient-text">
+                Привет! Мы — Екатерина и Данил
+              </h3>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Мы с Данилом открыли BUBBLE в 2021 году с идеей создать место, где можно насладиться 
+                настоящим баблти с тапиокой и отличным кофе в уютной атмосфере.
+              </p>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Наша философия проста: качественные ингредиенты, внимание к деталям и забота о каждом госте. 
+                Мы тщательно отбираем кофе, готовим тапиоку по классическим рецептам и создаем уникальные 
+                сочетания вкусов.
+              </p>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                BUBBLE — это не просто кофейня, это место встреч, вдохновения и настоящего удовольствия 
+                от любимых напитков. Приходите попробовать!
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            <div className="rounded-2xl overflow-hidden border-2 border-primary/20 hover:neon-border transition-all animate-scale-in">
+              <img 
+                src="https://cdn.poehali.dev/files/3fb9a303-ddb0-450c-856e-45cb4535069a.JPG" 
+                alt="Интерьер кофейни BUBBLE"
+                className="w-full h-64 object-cover"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden border-2 border-primary/20 hover:neon-border transition-all animate-scale-in" style={{ animationDelay: '0.1s' }}>
+              <img 
+                src="https://cdn.poehali.dev/files/79a4f561-6ebb-44ce-aef1-9781cabe5690.JPG" 
+                alt="Баблти с тапиокой"
+                className="w-full h-64 object-cover"
+              />
+            </div>
+            <div className="rounded-2xl overflow-hidden border-2 border-primary/20 hover:neon-border transition-all animate-scale-in" style={{ animationDelay: '0.2s' }}>
+              <img 
+                src="https://cdn.poehali.dev/files/43af69b9-81ec-415b-8ee0-23795b0ddbba.JPG" 
+                alt="Гость кофейни с напитком"
+                className="w-full h-64 object-cover"
+              />
+            </div>
+          </div>
+
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-card/50 p-8 rounded-2xl border-2 neon-border hover:neon-box transition-all animate-fade-in">
-              <div className="text-5xl mb-4">⏰</div>
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-4 neon-box">
+                <Icon name="Clock" size={32} className="text-white" />
+              </div>
               <h3 className="text-xl font-bold mb-2 gradient-text">Счастливые часы</h3>
               <p className="text-muted-foreground">
                 08:00 - 12:00<br />
@@ -51,16 +110,29 @@ const Index = () => {
             </div>
 
             <div className="bg-card/50 p-8 rounded-2xl border-2 neon-border hover:neon-box transition-all animate-fade-in" style={{ animationDelay: '0.1s' }}>
-              <div className="text-5xl mb-4">🎁</div>
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-4 neon-box">
+                <Icon name="Gift" size={32} className="text-white" />
+              </div>
               <h3 className="text-xl font-bold mb-2 gradient-text">Программа лояльности</h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground mb-4">
                 Каждая 7-я кружка кофе<br />
                 300мл в подарок
               </p>
+              <a
+                href="https://onelink.to/6d2m4z"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all"
+              >
+                Скачать приложение
+                <Icon name="ExternalLink" size={16} />
+              </a>
             </div>
 
             <div className="bg-card/50 p-8 rounded-2xl border-2 neon-border hover:neon-box transition-all animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="text-5xl mb-4">📍</div>
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-secondary flex items-center justify-center mb-4 neon-box">
+                <Icon name="MapPin" size={32} className="text-white" />
+              </div>
               <h3 className="text-xl font-bold mb-2 gradient-text">Удобное расположение</h3>
               <p className="text-muted-foreground">
                 Москва, Юлиана Семенова, 8к2<br />
