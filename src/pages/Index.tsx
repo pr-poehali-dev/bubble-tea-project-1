@@ -10,9 +10,7 @@ const Index = () => {
       
       <section className="pt-32 pb-20 px-4">
         <div className="container mx-auto text-center">
-          <div className="animate-float inline-block mb-8 text-8xl">
-            🧋
-          </div>
+          <div className="animate-float inline-block mb-8 text-8xl">💗</div>
           <h1 className="font-bubble text-6xl md:text-8xl gradient-text neon-text mb-6 animate-pulse-neon">
             BUBBLE
           </h1>
